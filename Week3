@@ -1,0 +1,37 @@
+Linear regression (with a threshold) is usually a bad choice for "CLASSIFICATION" problems.
+	Solution: Use LOGISTIC REGRESSION instead of linear regression!
+	SIgmoid/logistic function: g(z) = 1/(1+exp(-z)). (i.e. h_theta(x) = 1/(1+exp(-theta'*x)))
+	h_theta(x) = P(y=1|x;theta). Predict y=1 whenever h_theta(x)>=0.5; predict y=0 whenever h_theta(x)<0.5.
+	Hence "decision boundary" equals to the scenario when theta'x = 0.
+	
+Cost function in a SUPERVISED classification problem:
+	unfortunately, the cost function used for linear regression is not applicable here due to the logistic function. The combined form causes J to be a "non-convex" function (meaning having many local minimum) of theta.
+	For logistic regression, cost function is defined as:
+		Cost(h_theta(x), y) = -log(h_theta(x)) (if y==1); or -log(1-h_theta(x)) (if y==0). Since y=0/1:
+		Cost(h_theta(x), y) = -y*log(h_theta(x)) - (1-y)*log(1-h_theta(x)).
+		Summed form:
+		Cost(h_theta(x), y) = -1/m(y*log(h_theta(x)) + (1-y)*log(1-h_theta(x)))
+		"... derived from statistics using the principle of maximum likelihood estimation ..." (NEED TO LEARN!)	
+		It turns out the gradient descent function here for classification is EXACTLY the same as that for linear regression!
+		Feature scaling also helps in regression for classification!
+		
+		Note: there are many optimized algorithms compared to gradient descent such as:
+			Conjugate gradient
+			BFGS
+			L-BFGs
+		these functions have the advantage of not needing to sdjust the vlue of alpha and performing faster in usual.
+
+Multi-class classification:
+	One-vs-all (or one-vs-rest): Use an aritificial model for EACH class, in which the trainning sets are divided into two groups only: this class and the rest.
+	For a new input x, just pick the class (i) that returns the largest possibility h_theta^i(x).
+	
+Overfitting: If we have too many features, the learned hypothesis may fit the training sets very well, but fail to GENERALIZE to new examples.
+	Method to address overfitting:
+		1. Reduce number of features.
+			(Manual) select which features to keep.
+			(Automatic) model selection algorithm.
+		2. Regularization.
+			Keep all the features, but reduce magnitude/values of parameters theta_j.
+			Works well when there are a lot of features and each contributes a bit to predicting y.
+			Implementation: if we do not know which theta_j is higher-order, we can simply "penalize" all of the theta values by modifying the cost function so that all the theta values tend to be small.
+			An extra benefit of introducing regularization is that the direct calculation of optimal theta is now always possible as there will no longer be degenerate matrices to inverse! (Mathematically, if m<=n, the consturcted X, is an m-by-(n+1) matrix. then the rank of X^T*X is no larger than m, meaning X^T*X is degenerate.)

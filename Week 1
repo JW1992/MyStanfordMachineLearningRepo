@@ -1,0 +1,14 @@
+Cocktail party problem
+	Different people taking at the same time. Can you use two microphones at different locations in the room to separate their voices well?
+	
+
+	Note: assignment a:=1; assert a=1
+	
+"Batch" gradient descent
+
+"Normal equation method" can directly, numerically solve for the minimum cost function J. But iterative methods still outperforms with large datasets.
+
+ONE-index vectors are used in this course.
+
+Non-square matrices (m-by-n matrices for which m ≠ n) do NOT have an inverse.
+Matrices without inverses are called "singular" or "degenerate" matrices.

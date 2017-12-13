@@ -1,0 +1,11 @@
+Feature scaling:
+	In some cases the COST FUNCTION can be very sensitive to one variable (variable v1 in a small range), and less sensitive to another variable (v2 in a large range). On the "contour" of optimization, we can see if we directly use the gradient descent method the optimization can "oscillate" back and forth. This takes a lot of time to reach a global minimum. Hence, we would like to optimize the gradient descent method by FEATURE SCALING (normalizin the variables by normalizing them by the scale).
+	actual implementation of feature scaling would like the variable to range from -1 to 1 (appriximately).
+
+Mean normalization:
+	It is preferred to replace x_i with x_i - u_i where u_i is the mean of x_i. (Not applicable to x_0 of course)
+	
+Direct derivation of optimum theta (normal equation):
+	theta = (X^TX)^{-1}X^Ty. (Try to derive by self!)
+	Drawback: nxn matrix multiplication time complexity O(n^3). Inverse of matrix: MAYBE O(n^3)
+	Corner cases: non-invertable (singular/degenerate) X^TX: Usually this is caused by 1) rudundant features or 2) too many features (in comparison to too few training sets). For the second issue we can delete features, or use REGULARIZATION. ('pinv', or pseudo inverse function in Octave takes care of this problem)

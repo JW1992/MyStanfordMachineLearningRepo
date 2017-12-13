@@ -1,0 +1,10 @@
+SVM
+
+	When using a kernel, DO perform feature scaling before using the kernel!
+	(For charge sharing events analysis, we could: a. normalize the amplitude after subtraction by Cs-137 amplitude; b. normalize the transient amplitudes by the triggered signal amplitude then MULTIPLY BY, sqy, 5)
+	Common kernels: linear (no) kernel; Gaussian kernel.
+	Some other kernels: polynomial kernel, String kernel, chi-sqaure kernel, histogram...
+	Note not all similarity functions can be used for SVM. They must satisfy "Mercer's Theorem"!
+	Note 2: use "CROSS VALIDATION" to select the best kernel/C/theta!
+	Neural network can mostly work well for problems that logistic regresssion and SVM work with, but it is slower.
+	Also, an advantage of SVM is most of the time it is solving a convex problem in which there is only global optimum.
