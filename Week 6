@@ -1,0 +1,1 @@
+Note in the assignment (i.e. Ex5) there is a corner case when there is only ONE training set. Then the gradient of cost function no longer needs function 'sum' !!
